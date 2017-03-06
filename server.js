@@ -15,5 +15,7 @@ var tags = require('./plugins/tags'); /* for really terse code, this could be
 //   .act('role:crud,cmd:fetchTags,filterBy:angler', console.log) // 'role:retrieve' is just a namespacing convention
 
   require('seneca')()
-    .use(tags, {logfile: './tags.log'})
-    .listen(9000);
+    .use(tags, { logfile: './tags.log' })
+    .listen({ type: 'tcp', pin: 'role:crud' }); /* the additional pin is recommended - encourage all
+                           * action handlers to only deal with known patterns.
+                           */
