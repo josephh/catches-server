@@ -43,7 +43,7 @@ module.exports = function tags(options) {
     })
   }
 
- /* COMMENTED CODE BELOW LEFT TO SUPPORT EXPLANATION OF SENECA.ACT - refactored.
+ /* COMMENTED CODE BELOW LEFT TO SUPPORT EXPLANATION OF SENECA.ADD - refactored.
   * seneca.add takes 2 parameters:
   * 1. 'pattern' - the property pattern to match in any json message sent to
   * seneca
@@ -70,8 +70,10 @@ module.exports = function tags(options) {
       angler: ['jon','bob','gabor','arvind'],
       location: ['avon','thames','shepperton lock','lord\'s walk']
     };
-    log(`logged tags = ${tags[msg.filterBy]}`)
-    respond(null, tags[msg.filterBy])
+    log(`logged tags = ${tags[msg.filterBy]}`);
+    debugger
+    if(msg.filterBy) respond(null, tags[msg.filterBy]);
+    else respond(null, tags);
   };
 
   function make_log(fd) {
