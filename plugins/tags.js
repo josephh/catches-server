@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 var fs = require('fs');
  /*
   * A seneca 'plugin' is a set of action patterns (same as a seneca instance).
@@ -13,9 +15,11 @@ var fs = require('fs');
   */
 module.exports = function tags(options) {
 
+'use strict';
+
  /*
   * The `this` context variable of the plugin definition is an instance of
-  * seneca, that can't be used to declare action patterns.
+  * seneca, that can be used to declare action patterns.
   */
 
   // plugin patterns here altogether for readability
@@ -36,11 +40,11 @@ module.exports = function tags(options) {
 
       // cannot open for writing, so fail
       // this error is fatal to Seneca
-      if (err) return respond(err)
+      if (err) return respond(err);
 
-      log = make_log(fd)
-      respond()
-    })
+      var log = make_log(fd);
+      respond();
+    });
   }
 
  /* COMMENTED CODE BELOW LEFT TO SUPPORT EXPLANATION OF SENECA.ADD - refactored.
@@ -71,22 +75,21 @@ module.exports = function tags(options) {
       location: ['avon','thames','shepperton lock','lord\'s walk']
     };
     log(`logged tags = ${tags[msg.filterBy]}`);
-    debugger
     if(msg.filterBy) respond(null, tags[msg.filterBy]);
     else respond(null, tags);
-  };
+  }
 
   function make_log(fd) {
     return function (entry) {
       fs.write(fd, new Date().toISOString()+' '+ entry, null, 'utf8', function (err) {
-        if (err) return console.log(err)
+        if (err) return console.log(err);
 
         // ensure log entry is flushed
         fs.fsync(fd, function (err) {
-          if (err) return console.log(err)
-          })
-        })
-    }
+          if (err) return console.log(err);
+        });
+      });
+    };
   }
 
-}
+};

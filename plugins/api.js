@@ -4,8 +4,8 @@
  */
 module.exports = function api( options ) {
 
-  var valid_ops = {
-    tags:'fetchTags'
+  var valid_ops = { // map for use in sanitizing input - not in use yet..
+    // calculate: 'sum'
   };
 
   this.add( 'role:api,path:tags', function( msg, respond ) {
@@ -23,7 +23,9 @@ module.exports = function api( options ) {
       prefix: '/api',
       pin:    'role:api,path:*',
       map: {
-        tags: { GET:true }
+        tags: { GET:true },
+        catch: { GET: true, suffix: '/:id' },
+        catches: { GET: true }
       }
     }}, respond )
   })

@@ -16,6 +16,7 @@ var tags = require('./plugins/tags'); /* for really terse code, this could be
 
   require('seneca')()
     .use(tags, { logfile: './tags.log' })
+    .use('entity')
     .listen({ type: 'tcp', pin: 'role:crud' }); /* the additional pin is recommended - encourage all
                            * action handlers to only deal with known patterns.
                            */
