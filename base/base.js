@@ -16,12 +16,11 @@
 
  * @module base/base
  */
-var TAG = process.env.TAG || process.argv[2] || 'base';
-var PORT = process.env.PORT || process.argv[3] || 39999;
-var HOST = process.env.HOST || process.argv[4] || '127.0.0.1';
-var BASES = (process.env.BASES || process.argv[5] || '').split(',');
-var SILENT = process.env.SILENT || process.argv[6] || 'true';
-
+var TAG = process.env.TAG || process.argv[2] || 'base',
+  PORT = process.env.PORT || process.argv[3] || 39999,
+  HOST = process.env.HOST || process.argv[4] || '127.0.0.1',
+  BASES = (process.env.BASES || process.argv[5] || '').split(','),
+  SILENT = process.env.SILENT || process.argv[6] || 'true';
 
 require('seneca')({
   tag: TAG,
@@ -31,7 +30,7 @@ require('seneca')({
   .test(console.log, 'print') // verbose output
   //.use('zipkin-tracer', {sampling:1})
   .use('mesh',{
-    monitor: true,
+    // monitor: true,
     isbase: true,
     port: PORT,
     host: HOST,
