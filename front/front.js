@@ -6,7 +6,7 @@
   BASES = (process.env.BASES || process.argv[3] || '').split(','),
   SILENT = process.env.SILENT || process.argv[4] || 'true';
 
-var Hapi = require('hapi'),
+var Hapi = require('hapi'),  // we server that proxies
   Rif = require('rif'),
   rif = Rif(),
   server = new Hapi.Server(),
@@ -16,10 +16,15 @@ server.connection({
   port: 8000 // test with http://localhost:8000/api/ping
 });
 
-server.register(require('inert'));
+server.register(require('inert'));  // Static file and directory handlers plugin for hapi.js.
+/**
+ * README
+ * inert provides new handler methods for serving static files and directories,
+ * as well as decorating the reply interface with a file method for serving file based resources.
+ */
 
 server.register({
-  register: require('wo'),
+  register: require('wo', console.log),
   options: {
     bases: BASES,
     sneeze: {
@@ -33,17 +38,17 @@ server.register({
 server.route({
   method: 'GET', path: '/api/ping',
   handler: {
-    wo: {}
+    wo: {} // wo proxies the hapi server requests from here to wherever...
   }
 });
-//
-// server.route({
-//   method: 'GET', path: '/api/filters',
-//   handler: {
-//     wo: {} // no config
-//   }
-// });
-//
+
+server.route({
+  method: 'GET', path: '/api/filters',
+  handler: {
+    wo: {} // no config
+  }
+});
+
 // server.route({
 //   method: 'GET', path: '/api/catches',
 //   handler: {

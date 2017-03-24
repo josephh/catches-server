@@ -11,7 +11,7 @@
  For nodes to join they network, with Mesh and Swim, all a new service needs
  to do is be pointed at an existing service.  However, using base nodes is a
  good approach to bootstrapping the microservice application since, then all
- new services need to do is find the base nodes.
+ new services need to do is find the base node(s).
 
 
  * @module base/base
@@ -29,14 +29,13 @@ require('seneca')({
 })
   .test(console.log, 'print') // verbose output
   //.use('zipkin-tracer', {sampling:1})
-  .use('mesh',{
-    // monitor: true,
+  .use('mesh', {
     isbase: true,
     port: PORT,
     host: HOST,
     bases: BASES,
     pin:'role:mesh',
-    sneeze: {
+    sneeze: { // the SWIM algorithm
       silent: JSON.parse(SILENT),
       swim: {interval: 1111}
     }

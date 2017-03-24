@@ -18,12 +18,18 @@ var tag = 'api',
   host = rif(HOST) || HOST;
 
 server.connection({
+  // this is the magic - SWIM will inform front.js about this port
     port: PORT,
     host: host
 });
 
 server.register({
-  register: Chairo,
+  register: Chairo, /** seneca microservices plugin for seneca
+                      *
+                      * The plugin integrates the Seneca functionality into hapi
+                      * and provide tools to map its actions to server methods
+                      * and views for easy access.
+                      */
   options:{
     seneca: Seneca({
       tag: tag,
@@ -35,13 +41,13 @@ server.register({
 });
 
 server.register({  // wire up the web server and its routes
-  register: require('wo'),
+  register: require('wo'), // join SWIM network...
+  //... advertising the routes defined here...
   options:{
     bases: BASES,
     route: [
-        {path: '/api/ping'} // default method is GET
-        // {path: '/api/ping'}, // default method is GET
-        // {path: '/api/filters'},
+        {path: '/api/ping'}, // default method is GETT
+        {path: '/api/filters'}
         // {path: '/api/catches'},
         // {path: '/api/catches/{id}', method: 'post'},
         // {path: '/api/catches/{id}'}
@@ -65,7 +71,28 @@ server.route({
     );
   }
 });
-//
+
+/**
+ * GET Filters route
+ */
+server.route({
+  method: 'GET', path: '/api/filters',
+  handler: function( req, reply ){
+    console.log('api/filters handler');
+    server.seneca.act(
+      'fetch:filters',
+      {user:req.params.user, target:req.payload.user},
+      function(err,out) {
+      if( err ) return reply.redirect('/error')
+
+      reply.redirect(req.payload.from)
+    }
+    )
+  }
+})
+
+
+
 // server.route({
 //   method: 'POST', path: '/api/catches/{id}',
 //   handler: function( req, reply ){
@@ -85,6 +112,11 @@ server.route({
 //     )}
 // })
 //
+
+/**
+ * We don't mind providing the seneca action handler for ping here, since it
+ * has little if any functionality (no need for its own plugin)
+ */
 server.seneca
   .add('role:api,cmd:ping', function(msg,done){
       done( null, {pong:true,api:true,time:Date.now()});
