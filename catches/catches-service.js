@@ -16,7 +16,7 @@ require('seneca')({
   .use('catches-logic')
   .use('mesh',
     {
-      pin: 'catches:create',
+      pin: 'catches:*',
       bases: BASES,
       host: HOST,
       sneeze: {

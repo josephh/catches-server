@@ -12,7 +12,7 @@ var tags = require('./plugins/tags'); /* for really terse code, this could be
 //    * 2. response_callback: function that receives the response message
 //    * (if any comes back from the act action)
 //    */
-//   .act('role:crud,cmd:fetchTags,filterBy:angler', console.log) // 'role:retrieve' is just a namespacing convention
+//   .act('role:crud,cmd:fetchTags,filterBy:angler', console.log) // 'role:crud' is just a namespacing convention
 
   require('seneca')()
     .use(tags, { logfile: './tags.log' })

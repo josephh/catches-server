@@ -1,0 +1,2 @@
+# POST create catch using file data
+curl -i -X POST localhost:8000/api/catches/1 -H "content-type: application/json" --data-binary @create-catch.json

@@ -49,12 +49,12 @@ server.route({
   }
 });
 
-// server.route({
-//   method: 'GET', path: '/api/catches',
-//   handler: {
-//     wo: {}
-//   }
-// });
+server.route({
+  method: 'GET', path: '/api/catches',
+  handler: {
+    wo: {}
+  }
+});
 
 server.route({
   method: ['GET', 'POST'], path: '/api/catches/{id}',

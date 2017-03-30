@@ -48,7 +48,7 @@ server.register({  // wire up the web server and its routes
     route: [
         {path: '/api/ping'}, // default method is GET
         {path: '/api/filters'},
-        // {path: '/api/catches'},
+        {path: '/api/catches'},
         {path: '/api/catches/{id}', method: ['post', 'get']},
         // {path: '/api/catches/{id}'}
     ],
@@ -90,17 +90,39 @@ server.route({
   }
 });
 
+/**
+ * GET Catches§ route
+ */
+server.route({
+  method: 'GET', path: '/api/catches',
+  handler: function( req, reply ){
+    console.log('api/catches GET');
+    server.seneca.act(
+      'catches:fetch',
+      // no sub message,
+      function(err,out) {
+        if(err) return reply.redirect('/error');
+        reply(out);
+      }
+    );
+  }
+});
+
+/**
+ * POST catches route
+ */
 server.route({
   method: 'POST', path: '/api/catches/{id}',
   handler: function( req, reply ) {
     console.log('/api/catches/id POST >>>> ');
     console.log('Request Params >>>> ', req.params);
     console.log('Request Payload >>>> ', req.payload);
+    console.log('Request Payload data field contents >>>> ', req.payload.data);
     server.seneca.act(
       'catches:create',
-      // { // sub-message with create object
-      //   catches:req.payload.data
-      // },
+      { // sub-message with create object
+        data: req.payload.data
+      },
       function(err, out) {
         console.log('/api/catches POST', err, out);
         if(err) return reply.redirect('/error');
