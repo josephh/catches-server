@@ -46,10 +46,10 @@ server.register({  // wire up the web server and its routes
   options:{
     bases: BASES,
     route: [
-        {path: '/api/ping'}, // default method is GETT
-        {path: '/api/filters'}
+        {path: '/api/ping'}, // default method is GET
+        {path: '/api/filters'},
         // {path: '/api/catches'},
-        // {path: '/api/catches/{id}', method: 'post'},
+        {path: '/api/catches/{id}', method: ['post', 'get']},
         // {path: '/api/catches/{id}'}
     ],
     sneeze: {
@@ -60,7 +60,7 @@ server.register({  // wire up the web server and its routes
   }
 });
 
-server.route({
+server.route({  // seneca action handler here - not complicated enough for a plugin
   method: 'GET', path: '/api/ping',
   handler: function( req, reply ){
     server.seneca.act(
@@ -80,42 +80,38 @@ server.route({
   handler: function( req, reply ){
     console.log('api/filters handler');
     server.seneca.act(
-      'fetch:filters',
-      {user:req.params.user, target:req.payload.user},
+      'filters:fetch',
+      // no sub message,
       function(err,out) {
-      if( err ) return reply.redirect('/error')
-
-      reply.redirect(req.payload.from)
-    }
-    )
+        if(err) return reply.redirect('/error');
+        reply(out);
+      }
+    );
   }
-})
+});
 
-
-
-// server.route({
-//   method: 'POST', path: '/api/catches/{id}',
-//   handler: function( req, reply ){
-//
-//       console.log('/api/catches id', req.params, req.payload)
-//
-//     server.seneca.act(
-//       'post:entry',
-//       {user:req.params.user, text:req.payload.text},
-//       function(err,out) {
-// 	  console.log('/api/post B', err, out)
-//
-// 	  if( err ) return reply.redirect('/error')
-//
-//         reply.redirect(req.payload.from)
-//       }
-//     )}
-// })
-//
+server.route({
+  method: 'POST', path: '/api/catches/{id}',
+  handler: function( req, reply ) {
+    console.log('/api/catches/id POST >>>> ');
+    console.log('Request Params >>>> ', req.params);
+    console.log('Request Payload >>>> ', req.payload);
+    server.seneca.act(
+      'catches:create',
+      // { // sub-message with create object
+      //   catches:req.payload.data
+      // },
+      function(err, out) {
+        console.log('/api/catches POST', err, out);
+        if(err) return reply.redirect('/error');
+        reply(out);
+      }
+    );
+  }
+});
 
 /**
- * We don't mind providing the seneca action handler for ping here, since it
- * has little if any functionality (no need for its own plugin)
+ * Ping doesn't need its own plugin (handler defined here)
  */
 server.seneca
   .add('role:api,cmd:ping', function(msg,done){

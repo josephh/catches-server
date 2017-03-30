@@ -1,22 +1,22 @@
 /**
- * Configure the Filters microservice.
+ * Configure the Catches microservice.
  *
- * @module filters/filters-service
+ * @module catches/catches-service
  */
 var HOST = process.env.HOST || process.argv[2] || '127.0.0.1',
   BASES = (process.env.BASES || process.argv[3] || '').split(','),
   SILENT = process.env.SILENT || process.argv[4] || 'true';
 
 require('seneca')({
-  tag: 'filters',
+  tag: 'catches',
   internal: {logger: require('seneca-demo-logger')},
   debug: {short_logs: true}
 })
   .use('zipkin-tracer', {sampling:1})
-  .use('filters-logic')
+  .use('catches-logic')
   .use('mesh',
     {
-      pin: 'fetch:filters',
+      pin: 'catches:create',
       bases: BASES,
       host: HOST,
       sneeze: {

@@ -9,5 +9,9 @@ node base/base.js base1 39001 $HOST $BASES $OPTS &
 sleep 1
 node front/front.js $HOST $BASES $OPTS &
 sleep 1
-# node api/api-service.js 0 $HOST $BASES $OPTS &
-# sleep 1
+node api/api-service.js 0 $HOST $BASES $OPTS &
+sleep 1
+node filters/filters-service.js $HOST $BASES $OPTS &
+sleep 1
+node catches/catches-service.js $HOST $BASES $OPTS &
+sleep 1

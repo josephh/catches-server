@@ -55,15 +55,15 @@ server.route({
 //     wo: {}
 //   }
 // });
-//
-// server.route({
-//   method: ['GET', 'POST'], path: '/api/catches/{id}',
-//   handler: {
-//     wo: {
-//       passThrough: true // prompt for user login
-//     }
-//   }
-// });
+
+server.route({
+  method: ['GET', 'POST'], path: '/api/catches/{id}',
+  handler: {
+    wo: {
+      passThrough: true // prompt for user login
+    }
+  }
+});
 
 server.start(function(){
   console.log('front',server.info.uri)
