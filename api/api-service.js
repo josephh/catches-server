@@ -114,13 +114,13 @@ server.route({
 server.route({
   method: 'POST', path: '/api/catches/{id}',
   handler: function( req, reply ) {
-    console.log('/api/catches/id POST >>>> ');
     console.log('Request Params >>>> ', req.params);
     console.log('Request Payload >>>> ', req.payload);
     console.log('Request Payload data field contents >>>> ', req.payload.data);
     server.seneca.act(
       'catches:create',
-      { // sub-message with create object
+      { // sub-message
+        id: req.params.id,
         data: req.payload.data
       },
       function(err, out) {

@@ -7,7 +7,7 @@
 module.exports = function filters (options) {
   var seneca = this;
 
-  seneca.add('fetch:filters', function(msg, done) {
+  seneca.add('filters:fetch', function(msg, done) {
     var seneca = this;
 
     // fetch from backing store...eventually
