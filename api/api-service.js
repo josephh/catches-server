@@ -80,7 +80,7 @@ server.route({
   handler: function( req, reply ){
     console.log('api/filters handler');
     server.seneca.act(
-      'filters:fetch',
+      'filters:fetchAll',
       // no sub message,
       function(err,out) {
         if(err) return reply.redirect('/error');
@@ -91,15 +91,17 @@ server.route({
 });
 
 /**
- * GET Catches§ route
+ * GET All Catches route
  */
 server.route({
   method: 'GET', path: '/api/catches',
   handler: function( req, reply ){
     console.log('api/catches GET');
     server.seneca.act(
-      'catches:fetch',
-      // no sub message,
+      'catches:fetchAll',
+      { // sub-message
+        params: req.query
+      },
       function(err,out) {
         if(err) return reply.redirect('/error');
         reply(out);
@@ -107,6 +109,27 @@ server.route({
     );
   }
 });
+
+/**
+ * GET Catches by id route
+ */
+server.route({
+  method: 'GET', path: '/api/catches/{id}',
+  handler: function( req, reply ){
+    console.log('api/catches/{id} GET');
+    server.seneca.act(
+      'catches:fetch',
+      { // sub-message
+        params: req.params
+      },
+      function(err,out) {
+        if(err) return reply.redirect('/error');
+        reply(out);
+      }
+    );
+  }
+});
+
 
 /**
  * POST catches route

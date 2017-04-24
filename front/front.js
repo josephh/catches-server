@@ -66,5 +66,5 @@ server.route({
 });
 
 server.start(function(){
-  console.log('front',server.info.uri)
+  console.log('front', server.info.uri)
 });

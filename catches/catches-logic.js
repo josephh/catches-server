@@ -8,6 +8,8 @@
 module.exports = function catches (options) {
   var seneca = this;
 
+  seneca.use('../store/store');
+
   seneca.add('catches:create', function(msg, done) {
     var seneca = this;
 
@@ -17,7 +19,7 @@ module.exports = function catches (options) {
       console.log('next prop : ' + prop + ', val : ' + msg.data[prop]);
     }
 
-    // fetch from backing store...eventually
+    // store in backing store...eventually
 
     done(null, {msg: 'done'});
 
@@ -33,69 +35,40 @@ module.exports = function catches (options) {
   // })
 
   seneca.add('catches:fetch', function(msg, done) {
+    console.log('Inside the get catch by id handler...');
+    console.log(`fetch catch with id ${msg.params.id}`);
+
+    this.act('store:get,kind:catches', {id: msg.params.id}, function(err, jsonResponse) {
+      if(err) return done(err);
+
+      done(null, jsonResponse); // no error? return the response to the client
+    });
+
+
+  });
+
+  seneca.add('catches:fetchAll', function(msg, done) {
     var seneca = this;
 
-    console.log(`Inside the get catches handler...`);
-    // fetch from backing store...eventually
+    const fishFilter = msg.params.fishFilter,
+     anglerFilter = msg.params.anglerFilter,
+     locationFilter = msg.params.locationFilter,
+     from = msg.params.startFrom,
+     count = msg.params.howMany;
 
-    var jsonResponse =
-    {
-      "data": [
-        {
-          "id": "824234",
-          "species": "carp",
-          "date": "2016-04-26T08:46:27Z",
-          "user-id": "8743jkh34",
-          "location-id": "ash87123ss",
-          "images": [
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/Main-1024x748.jpg",
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/home-made-baits-04.jpg"
-          ],
-          "tags": [
-            {
-              "type": "location",
-              "value": "jon_the_poacher"
-            }
-          ]
-        },
-        {
-          "id": "824234",
-          "species": "carp",
-          "date": "2016-04-26T08:46:27Z",
-          "user-id": "8743jkh34",
-          "location-id": "ash87123ss",
-          "images": [
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/Main-1024x748.jpg",
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/home-made-baits-04.jpg"
-          ],
-          "tags": [
-            {
-              "type": "location",
-              "value": "jon_the_poacher"
-            }
-          ]
-        },
-        {
-          "id": "824234",
-          "species": "carp",
-          "date": "2016-04-26T08:46:27Z",
-          "user-id": "8743jkh34",
-          "location-id": "ash87123ss",
-          "images": [
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/Main-1024x748.jpg",
-            "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/home-made-baits-04.jpg"
-          ],
-          "tags": [
-            {
-              "type": "location",
-              "value": "jon_the_poacher"
-            }
-          ]
-        }
-      ]
-    };
+    console.log(`Inside the get all catches handler...`);
+    console.log('Request parameters?');
+    console.log('Fish Filter? ' +  fishFilter || "none");
+    console.log('Angler Filter? ' + anglerFilter || "none");
+    console.log('Location Filter? ' + locationFilter || "none");
+    console.log('Start from? ' + from || "none");
+    console.log('howMany? ' + count || "none");
 
-    done(null, jsonResponse);
+    this.act('store:list,kind:catches', {id: msg.params.id}, function(err, jsonResponse) {
+      if(err) return done(err);
+
+      done(null, jsonResponse); // no error? return the response to the client
+    });
 
   });
 
