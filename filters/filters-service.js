@@ -16,7 +16,7 @@ require('seneca')({
   .use('filters-logic')
   .use('mesh',
     {
-      pin: 'filters:fetch',
+      pin: 'filters:fetchAll',
       bases: BASES,
       host: HOST,
       sneeze: {

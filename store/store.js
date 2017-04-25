@@ -1,5 +1,5 @@
 module.exports = function entry_store (options) {
-  var seneca = this;
+  var seneca = this, quote = require("underscore.string/quote");
   seneca.use('mongo-store',
     {
       uri: 'mongodb://127.0.0.1/fyb',
@@ -62,11 +62,72 @@ module.exports = function entry_store (options) {
   seneca.add('store:get,kind:catches', function(msg, done) {
     this.make('json','catches')
       .load$({id: msg.id}, function(err, got) {
-        if(err) return done(err); // exit and give error details to callback
+        if(err) return done(err); // exit and give error details to callback...
 
-        var jsonResponse = { data: {got}}; // otherwise carry on...
+        var jsonResponse = { data: {got}}; // ...otherwise carry on
         done(null, jsonResponse);
       })
   });
+
+  seneca.add('store:list,kind:uniqueAnglers', function(msg, done) {
+
+    var params = {
+      arrayName: 'tags',
+      queryField: 'tags.type',
+      queryValue: 'angler',
+      groupBy: 'tags.value'
+    },
+    aggregateQuery = buildDistinctAggregateQuery(params);
+
+    this.make('json', 'catches')
+      .native$(function (err, db) {
+      	var collection = db.collection('json_catches'); // with the entity library we 'make()  catches but actually the mongo collection is named json_catches
+      	collection.aggregate(aggregateQuery, function (err, list) {
+      		if (err) return done(err);
+      		console.log("Found records:", list);
+          done(null);
+      	});
+      });
+
+  });
+
+  function buildDistinctAggregateQuery(params) {
+
+// return [
+//   {$unwind : "$tags"},
+//   {$match : {
+//               "tags.type" : "angler"
+//   }},
+//   {$group: {
+//       _id : "$tags.value"
+//   }},
+//   {$group: {
+//       _id : "count",
+//       total : {"$sum" : 1},
+//       distinctValues : {$addToSet : "$_id"}
+//   }}
+// ]
+
+    let arrayName =  "$" + params.arrayName,
+      queryField = quote(params.queryField),
+      queryValue = params.queryValue,
+      groupBy = quote("$" + params.groupBy);
+      console.log('arrayName:' +arrayName);
+      console.log('queryField:'+queryField);
+      console.log('queryValue:'+queryValue );
+      console.log('groupBy:'+groupBy);
+    return [
+      {$unwind : arrayName},
+      {$match : {queryField : queryValue}},
+      {$group: {
+          _id : groupBy
+      }},
+      {$group: {
+          _id : "count",
+          total : {"$sum" : 1},
+          distinctValues : {$addToSet : "$_id"}
+      }}
+    ];
+  };
 
 }

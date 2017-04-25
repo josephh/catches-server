@@ -23,6 +23,7 @@
     "seneca-mongo-store": "^1.1.0",
     "seneca-zipkin-tracer": "^0.1.0",
     "sneeze": "https://github.com/rjrodger/sneeze#diagnostic",
+    "underscore.string": "^3.3.4",
     "wo": "^0.8.0"
   }
 }

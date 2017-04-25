@@ -25,15 +25,6 @@ module.exports = function catches (options) {
 
   });
 
-  // seneca.add('follow:list', function(msg,done){
-  //   this
-  //     .make('follow')
-  //     .load$(msg.user, function(err,follow){
-  //       var list = (follow && follow[msg.kind]) || []
-  //       done(err, list)
-  //     })
-  // })
-
   seneca.add('catches:fetch', function(msg, done) {
     console.log('Inside the get catch by id handler...');
     console.log(`fetch catch with id ${msg.params.id}`);
