@@ -81,11 +81,12 @@ module.exports = function entry_store (options) {
 
     this.make('json', 'catches')
       .native$(function (err, db) {
-      	var collection = db.collection('json_catches'); // with the entity library we 'make()  catches but actually the mongo collection is named json_catches
+      	var anglers, collection = db.collection('json_catches'); // with the entity library we 'make()  catches but actually the mongo collection is named json_catches
       	collection.aggregate(aggregateQuery, function (err, list) {
       		if (err) return done(err);
       		console.log("Found records:", list);
-          done(null);
+          anglers = list[0].distinctValues;
+          done(null, {data: [anglers]});
       	});
       });
 
@@ -109,16 +110,16 @@ module.exports = function entry_store (options) {
 // ]
 
     let arrayName =  "$" + params.arrayName,
-      queryField = quote(params.queryField),
+      queryField = params.queryField,
       queryValue = params.queryValue,
-      groupBy = quote("$" + params.groupBy);
+      groupBy = "$" + params.groupBy;
       console.log('arrayName:' +arrayName);
       console.log('queryField:'+queryField);
       console.log('queryValue:'+queryValue );
       console.log('groupBy:'+groupBy);
     return [
       {$unwind : arrayName},
-      {$match : {queryField : queryValue}},
+      {$match : {[queryField] : queryValue}}, // this odd property key syntax ('[]') is necessary because of ecmascript rules on using variables in object literals
       {$group: {
           _id : groupBy
       }},
