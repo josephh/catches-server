@@ -1,5 +1,5 @@
 module.exports = function entry_store (options) {
-  var seneca = this, quote = require("underscore.string/quote");
+  var seneca = this;
   seneca.use('mongo-store',
     {
       uri: 'mongodb://127.0.0.1/fyb',
@@ -69,54 +69,46 @@ module.exports = function entry_store (options) {
       })
   });
 
-  seneca.add('store:list,kind:uniqueAnglers', function(msg, done) {
+  seneca.add('store:list,kind:tags', function(msg, done) {
 
-    var params = {
-      arrayName: 'tags',
-      queryField: 'tags.type',
-      queryValue: 'angler',
-      groupBy: 'tags.value'
-    },
-    aggregateQuery = buildDistinctAggregateQuery(params);
+    var aggregateLocationQuery = buildDistinctAggregateTagQuery('location'),
+      aggregateAnglerQuery =  buildDistinctAggregateTagQuery('angler'),
+      mergedLists = {};
+
 
     this.make('json', 'catches')
       .native$(function (err, db) {
-      	var anglers, collection = db.collection('json_catches'); // with the entity library we 'make()  catches but actually the mongo collection is named json_catches
-      	collection.aggregate(aggregateQuery, function (err, list) {
-      		if (err) return done(err);
-      		console.log("Found records:", list);
-          anglers = list[0].distinctValues;
-          done(null, {data: [anglers]});
-      	});
+        var anglers, collection = db.collection('json_catches'); // with the entity library we 'make()  catches but actually the mongo collection is named json_catches
+        collection.aggregate(aggregateLocationQuery, function (err, list) {
+          if (err) return done(err);
+          locations = list[0].distinctValues;
+          console.log("Found distinct locations:", locations);
+          mergedLists.locations = locations;
+
+          collection.aggregate(aggregateAnglerQuery, function (err, list) {
+            if (err) return done(err);
+            anglers = list[0].distinctValues;
+            console.log("Found distinct anglers:", anglers);
+            mergedLists.anglers = anglers;
+
+/** TODO not sure this is the nicest way to tie up callbacks once all have completed
+perhaps use futures or find a different way to code up logic?? **/
+            done(null, {data: mergedLists});
+
+          });
+
+        });
       });
 
   });
 
-  function buildDistinctAggregateQuery(params) {
+  function buildDistinctAggregateTagQuery(value) {
 
-// return [
-//   {$unwind : "$tags"},
-//   {$match : {
-//               "tags.type" : "angler"
-//   }},
-//   {$group: {
-//       _id : "$tags.value"
-//   }},
-//   {$group: {
-//       _id : "count",
-//       total : {"$sum" : 1},
-//       distinctValues : {$addToSet : "$_id"}
-//   }}
-// ]
+    let arrayName =  "$tags",
+      queryField = "tags.type",
+      queryValue = value,
+      groupBy = "$tags.value";
 
-    let arrayName =  "$" + params.arrayName,
-      queryField = params.queryField,
-      queryValue = params.queryValue,
-      groupBy = "$" + params.groupBy;
-      console.log('arrayName:' +arrayName);
-      console.log('queryField:'+queryField);
-      console.log('queryValue:'+queryValue );
-      console.log('groupBy:'+groupBy);
     return [
       {$unwind : arrayName},
       {$match : {[queryField] : queryValue}}, // this odd property key syntax ('[]') is necessary because of ecmascript rules on using variables in object literals
