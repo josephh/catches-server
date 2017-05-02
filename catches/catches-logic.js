@@ -11,23 +11,24 @@ module.exports = function catches (options) {
   seneca.use('../store/store');
 
   seneca.add('catches:create', function(msg, done) {
-    var seneca = this;
 
-    console.log(`Catches create action handler for new catch with id ${msg.id}`);
+    console.log(`Inside the create catch handler...`);
     console.log('Message payload properties: ');
     for (var prop in msg.data) {
       console.log('next prop : ' + prop + ', val : ' + msg.data[prop]);
     }
 
-    // store in backing store...eventually
+    this.act('store:create,kind:catches', function(err, jsonResponse) {
+      if(err) return done(err);
 
-    done(null, {msg: 'done'});
+      done(null, jsonResponse); // no error? return the response to the client
+    });
+
 
   });
 
   seneca.add('catches:fetch', function(msg, done) {
     console.log('Inside the get catch by id handler...');
-    console.log(`fetch catch with id ${msg.params.id}`);
 
     this.act('store:get,kind:catches', {id: msg.params.id}, function(err, jsonResponse) {
       if(err) return done(err);
@@ -39,7 +40,6 @@ module.exports = function catches (options) {
   });
 
   seneca.add('catches:fetchAll', function(msg, done) {
-    var seneca = this;
 
     const fishFilter = msg.params.fishFilter,
      anglerFilter = msg.params.anglerFilter,

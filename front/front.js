@@ -50,6 +50,10 @@ server.route({
 });
 
 server.route({
+/**
+ * method argument could be an array of HTTP operations i.e. ['GET', 'POST']
+ * but we want GET to be an unsecure endpoint while POST is secure/ auth'd
+ */
   method: 'GET', path: '/api/catches',
   handler: {
     wo: {}
@@ -57,7 +61,16 @@ server.route({
 });
 
 server.route({
-  method: ['GET', 'POST'], path: '/api/catches/{id}',
+  method: 'POST', path: '/api/catches',
+  handler: {
+    wo: {
+      passThrough: true // prompt for user login
+    }
+  }
+});
+
+server.route({
+  method: 'GET', path: '/api/catches/{id}',
   handler: {
     wo: {
       passThrough: true // prompt for user login

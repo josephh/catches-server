@@ -48,9 +48,8 @@ server.register({  // wire up the web server and its routes
     route: [
         {path: '/api/ping'}, // default method is GET
         {path: '/api/filters'},
-        {path: '/api/catches'},
-        {path: '/api/catches/{id}', method: ['post', 'get']},
-        // {path: '/api/catches/{id}'}
+        {path: '/api/catches', method: ['POST', 'GET']},
+        {path: '/api/catches/{id}'}
     ],
     sneeze: {
       host: host,
@@ -135,7 +134,7 @@ server.route({
  * POST catches route
  */
 server.route({
-  method: 'POST', path: '/api/catches/{id}',
+  method: 'POST', path: '/api/catches',
   handler: function( req, reply ) {
     console.log('Request Params >>>> ', req.params);
     console.log('Request Payload >>>> ', req.payload);
