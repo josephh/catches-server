@@ -48,8 +48,8 @@ server.register({  // wire up the web server and its routes
     route: [
         {path: '/api/ping'}, // default method is GET
         {path: '/api/filters'},
-        {path: '/api/catches'},
-        {path: '/api/catches/{id}', method: ['post', 'get']},
+        {path: '/api/catches', method: ['POST', 'GET']},
+        {path: '/api/catches/{id}'}
         // {path: '/api/catches/{id}'}
     ],
     sneeze: {
@@ -78,7 +78,6 @@ server.route({  // seneca action handler here - not complicated enough for a plu
 server.route({
   method: 'GET', path: '/api/filters',
   handler: function( req, reply ){
-    console.log('api/filters handler');
     server.seneca.act(
       'filters:fetchAll',
       // no sub message,
@@ -87,7 +86,7 @@ server.route({
         reply(out);
       }
     );
-  }
+  },
 });
 
 /**
@@ -96,7 +95,6 @@ server.route({
 server.route({
   method: 'GET', path: '/api/catches',
   handler: function( req, reply ){
-    console.log('api/catches GET');
     server.seneca.act(
       'catches:fetchAll',
       { // sub-message
@@ -116,7 +114,6 @@ server.route({
 server.route({
   method: 'GET', path: '/api/catches/{id}',
   handler: function( req, reply ){
-    console.log('api/catches/{id} GET');
     server.seneca.act(
       'catches:fetch',
       { // sub-message
@@ -130,24 +127,15 @@ server.route({
   }
 });
 
-
-/**
- * POST catches route
- */
 server.route({
-  method: 'POST', path: '/api/catches/{id}',
+  method: 'POST', path: '/api/catches',
   handler: function( req, reply ) {
-    console.log('Request Params >>>> ', req.params);
-    console.log('Request Payload >>>> ', req.payload);
-    console.log('Request Payload data field contents >>>> ', req.payload.data);
     server.seneca.act(
       'catches:create',
       { // sub-message
-        id: req.params.id,
         data: req.payload.data
       },
       function(err, out) {
-        console.log('/api/catches POST', err, out);
         if(err) return reply.redirect('/error');
         reply(out);
       }

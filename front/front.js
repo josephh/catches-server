@@ -45,22 +45,35 @@ server.route({
 server.route({
   method: 'GET', path: '/api/filters',
   handler: {
-    wo: {} // no config
+    wo: {
+      passThrough: true
+    }
   }
 });
 
 server.route({
   method: 'GET', path: '/api/catches',
   handler: {
-    wo: {}
+    wo: {
+      passThrough: true
+    }
   }
 });
 
 server.route({
-  method: ['GET', 'POST'], path: '/api/catches/{id}',
+  method: 'GET', path: '/api/catches/{id}',
   handler: {
     wo: {
-      passThrough: true // prompt for user login
+      passThrough: true
+    }
+  }
+});
+
+server.route({
+  method: 'POST', path: '/api/catches',
+  handler: {
+    wo: {
+      passThrough: true // pass through sends on default config for HAPI (i think! - without it response headers like content-type are note set) 
     }
   }
 });

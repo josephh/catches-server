@@ -1,5 +1,5 @@
 /**
- * Save, retrieve, delete Filters module.
+ * Retrieve Filters module.
  *
  * @module filters/filters-logic
  */
@@ -19,16 +19,5 @@ module.exports = function filters (options) {
     });
 
   });
-
-
-  // seneca.add('follow:list', function(msg,done){
-  //   this
-  //     .make('follow')
-  //     .load$(msg.user, function(err,follow){
-  //       var list = (follow && follow[msg.kind]) || []
-  //       done(err, list)
-  //     })
-  // })
-
 
 };

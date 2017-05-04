@@ -34,7 +34,7 @@ module.exports = function entry_store (options) {
         text: msg.text
       })
       .save$(function(err, entry) {
-        if(err) return done(err)
+        if(err) return done(err);
 
         this.act(
           {
@@ -43,20 +43,20 @@ module.exports = function entry_store (options) {
           },
           entry,
           function(err) {
-            return done(err, entry)
-          })
-      })
-  })
+            return done(err, entry);
+          });
+      });
+  });
 
-  seneca.add('store:list, kind:catches', function(msg, done) {
+  seneca.add('store:list,kind:catches', function(msg, done) {
     this.make('json','catches') // here the base is used (json) to tie in with entity-to-datastore (mongodb) mapping
       .list$(function(err, list) {
-        if(err) return done(err)
+        if(err) return done(err);
 
         var jsonResponse = { data: [list]};
 
         done(null, jsonResponse);
-      })
+      });
   });
 
   seneca.add('store:get,kind:catches', function(msg, done) {
@@ -64,7 +64,18 @@ module.exports = function entry_store (options) {
       .load$({id: msg.id}, function(err, got) {
         if(err) return done(err); // exit and give error details to callback...
 
-        var jsonResponse = { data: {got}}; // ...otherwise carry on
+// ...otherwise carry on
+        var jsonResponse = {data: {
+            catchId: got.catch_id,
+            species: got.species,
+            date: got.date,
+            userId: got.user_id,
+            coordinates: got.coordinates || "not set", 
+            image: got.images[0],
+            tags: got.tags,
+            id: got.id
+          }
+        };
         done(null, jsonResponse);
       })
   });

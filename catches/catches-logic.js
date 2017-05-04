@@ -13,12 +13,6 @@ module.exports = function catches (options) {
   seneca.add('catches:create', function(msg, done) {
     var seneca = this;
 
-    console.log(`Catches create action handler for new catch with id ${msg.id}`);
-    console.log('Message payload properties: ');
-    for (var prop in msg.data) {
-      console.log('next prop : ' + prop + ', val : ' + msg.data[prop]);
-    }
-
     // store in backing store...eventually
 
     done(null, {msg: 'done'});
