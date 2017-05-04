@@ -27,24 +27,18 @@ module.exports = function entry_store (options) {
   **/
 
   seneca.add('store:save,kind:catches', function(msg, done) {
-    this
-      .make('json','catches', {
-        when: msg.when,
-        user: msg.user,
-        text: msg.text
+    this.make('json','catches', {
+        species: msg.species || "unknown",
+        date: msg.date,
+        user_id: msg.userId ,
+        coordinates: msg.coordinates,
+        image: msg.image,
+        tags: msg.tags
       })
       .save$(function(err, entry) {
         if(err) return done(err);
 
-        this.act(
-          {
-            timeline: 'insert',
-            users: [msg.user],
-          },
-          entry,
-          function(err) {
-            return done(err, entry);
-          });
+        done(null, {data: {entry}});
       });
   });
 
@@ -70,14 +64,14 @@ module.exports = function entry_store (options) {
             species: got.species,
             date: got.date,
             userId: got.user_id,
-            coordinates: got.coordinates || "not set", 
+            coordinates: got.coordinates || "not set",
             image: got.images[0],
             tags: got.tags,
             id: got.id
           }
         };
         done(null, jsonResponse);
-      })
+      });
   });
 
   seneca.add('store:list,kind:tags', function(msg, done) {
@@ -132,6 +126,6 @@ perhaps use futures or find a different way to code up logic?? **/
           distinctValues : {$addToSet : "$_id"}
       }}
     ];
-  };
+  }
 
-}
+};
