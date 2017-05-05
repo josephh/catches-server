@@ -47,7 +47,7 @@ module.exports = function entry_store (options) {
       .list$(function(err, list) {
         if(err) return done(err);
 
-        var jsonResponse = { data: [list]};
+        var jsonResponse = { data: list};
 
         done(null, jsonResponse);
       });
@@ -65,7 +65,7 @@ module.exports = function entry_store (options) {
             date: got.date,
             userId: got.user_id,
             coordinates: got.coordinates || "not set",
-            image: got.images[0],
+            image: got.image,
             tags: got.tags,
             id: got.id
           }
