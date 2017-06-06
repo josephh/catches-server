@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.61.0",
     "chairo": "^3.0.0",
+    "dotenv": "^4.0.0",
     "hapi": "^16.1.0",
     "inert": "^4.1.0",
+    "node-uuid": "^1.4.8",
     "rif": "^0.3.0",
     "seneca": "^3.3.0",
     "seneca-balance-client": "^0.6.0",
@@ -23,6 +26,7 @@
     "seneca-mongo-store": "^1.1.0",
     "seneca-zipkin-tracer": "^0.1.0",
     "sneeze": "https://github.com/rjrodger/sneeze#diagnostic",
+    "uuid": "^3.0.1",
     "wo": "^0.8.0"
   }
 }

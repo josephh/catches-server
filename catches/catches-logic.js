@@ -4,6 +4,9 @@
  *
  * @module catches/catches-logic
  */
+var Uuid = require('uuid'),
+  fs = require('fs'),
+  path = require('path');
 
 module.exports = function catches (options) {
   var seneca = this;

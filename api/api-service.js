@@ -10,7 +10,10 @@ var PORT = process.env.PORT || process.argv[2] || 0,
 var Hapi = require('hapi'),
   Chairo = require('chairo'),
   Seneca = require('seneca'),
-  Rif = require('rif');
+  Rif = require('rif'),
+  Uuid = require('uuid'),
+  fs = require('fs'),
+  Path = require('path');
 
 var tag = 'api',
   server = new Hapi.Server(),
@@ -129,11 +132,44 @@ server.route({
 
 server.route({
   method: 'POST', path: '/api/catches',
-  handler: function( req, reply ) {
+  config: {
+    payload: {
+      output: 'stream',
+      parse: true,
+      allow: 'multipart/form-data'
+    }
+  },
+  handler: function( request, reply ) {
+    const payload = request.payload,
+      jsonData = JSON.parse(payload.data)
+      image = payload.image;
+    var newName, name;
+    if (image) {
+      name = image.hapi.filename;
+      newName = `${Uuid.v1()}${Path.extname(name)}`;
+      var uploadPath =  `/Users/joe/fyb_uploads/${newName}`,
+        fileStream = fs.createWriteStream(uploadPath);
+      fileStream.on('error', function (err) {
+        console.error(err);
+      });
+      image.pipe(fileStream);
+      image.on('end', function (err) {
+        var ret = {
+          filename: image.hapi.filename,
+          headers: image.hapi.headers
+        };
+        console.log(`Wrote file to disk (incoming name ${ret.filename}, temp storage name ${newName})`);
+      });
+    } else {
+      /**
+       * TODO - missing image file! - explicit error raising...
+       */
+    }
+    jsonData.newCatch.tmpImage = newName || '';
     server.seneca.act(
       'catches:create',
       { // sub-message
-        data: req.payload.data
+        data: jsonData.newCatch
       },
       function(err, out) {
         if(err) return reply.redirect('/error');

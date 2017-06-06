@@ -11,8 +11,6 @@ var seneca = require('seneca')()
   .error( assert.fail )
   .act('role:info, cmd:save', console.log);
 
-// test_add_and_retrieve();
-
 function test_add_and_retrieve() {
   seneca.act(
     `role:crud,cmd:save,

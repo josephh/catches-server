@@ -1,3 +1,7 @@
+var AWS = require('aws-sdk');
+var fs = require('fs');
+var s3;
+
 module.exports = function entry_store (options) {
   var seneca = this;
   seneca.use('mongo-store',
@@ -26,20 +30,63 @@ module.exports = function entry_store (options) {
 
   **/
 
+  /**
+   * Pending figuring out how to get s3 store written and working (!), do aws s3 stuff in this plugin
+   */
+   seneca.add( {init:'store'}, function( args, done ) {
+     require('dotenv').config();
+     var s3Config = new AWS.Config({
+       accessKeyId: process.env.aws_access_key_id,
+       secretAccessKey: process.env.aws_secret_access_key,
+       region: 'eu-west-1'
+       // TODO further s3 config?
+     });
+     AWS.config.s3 = {params: {Bucket: process.env.bucket_name}};
+     s3 = new AWS.S3(s3Config); // the s3 service object
+     done();
+   });
+
   seneca.add('store:save,kind:catches', function(msg, done) {
-    this.make('json','catches', {
+    var newCatch = this.make('json','catches', {
         species: msg.species || "unknown",
         date: msg.date,
         user_id: msg.userId ,
         coordinates: msg.coordinates,
         image: msg.image,
         tags: msg.tags
-      })
-      .save$(function(err, entry) {
-        if(err) return done(err);
-
-        done(null, {data: {entry}});
       });
+    /* if the request includes an image file:
+     * 1. load it to s3
+     * 2. fetch a signed url for that image
+     * 3. store the image signed url as the value for the catch image
+     * 4. save the mongo record
+     */
+    if(msg.tmpImage) {
+      fs.readFile(`/Users/joe/fyb_uploads/${msg.tmpImage}`, function (err, data) {
+        if(err) throw err; // TODO eraro libray error handling etc
+
+        // node js api docs safe to be careful with Buffer - be sure to properly validate arguments to its constructors
+        var base64Data = Buffer.from(data, 'base64'),
+        key = `uploads/${msg.tmpImage}`,
+          params = {
+            Key: key,
+            Body: base64Data,
+            ACL: "authenticated-read"
+          };
+        s3.putObject(params, function (err, resp) {
+          if (err) throw err; // TODO add specific error message for this error callbacks e.g. "S3 putObject failed, exiting action handler"
+          s3.getSignedUrl('getObject', {Key: key}, function (err, data) {
+            if (err) console.log(err, err.stack);
+            console.log('data ???? ' + data);
+            newCatch.image = data;
+            newCatch.save$(function(err, entry) {
+              if(err) return done(err);
+            });
+            done(null, {data: {newCatch}});
+          })
+        });
+      });
+    }
   });
 
   seneca.add('store:list,kind:catches', function(msg, done) {
@@ -127,5 +174,7 @@ perhaps use futures or find a different way to code up logic?? **/
       }}
     ];
   }
+
+  return 'store';
 
 };

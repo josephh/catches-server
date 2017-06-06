@@ -1,3 +1,7 @@
 curl 'localhost:8000/api/catches?howMany=20&startFrom=10&fishFilter=salmon'
 curl 'localhost:8000/api/catches/58f9287b65edb4ad5c1b4ce6'
-curl -i -X POST localhost:8000/api/catches/1 -H "content-type: application/json" --data-binary @create-catch.json
+curl -i -X POST localhost:8000/api/catches -H "content-type: application/json" --data-binary @create-catch.json
+curl --form file=@data.csv    \
+     --form firstName=Melvin  \
+     --form lastName=Mooney   \
+     http://localhost:8000/api/image
