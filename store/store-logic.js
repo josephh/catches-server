@@ -81,8 +81,9 @@ module.exports = function entry_store (options) {
             newCatch.image = data;
             newCatch.save$(function(err, entry) {
               if(err) return done(err);
+              newCatch.id = entry.id;
+              done(null, {data: {newCatch}});
             });
-            done(null, {data: {newCatch}});
           })
         });
       });

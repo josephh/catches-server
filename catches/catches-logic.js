@@ -11,8 +11,6 @@ var Uuid = require('uuid'),
 module.exports = function catches (options) {
   var seneca = this;
 
-  seneca.use('../store/store');
-
   seneca.add('catches:create', function(msg, done) {
     this.act('store:save,kind:catches', msg.data, function(err, jsonResponse) {
       if(err) return done(err);

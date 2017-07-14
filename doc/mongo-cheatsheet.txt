@@ -1,4 +1,3 @@
-## which db am i in?
 db
 ## what collections (in mongo collections can have arbitrary data object structures) in db?
 show dbs
@@ -6,7 +5,7 @@ show dbs
 use ...
 ## write records?
 ```javascript
-db.test.insert({...}) // _id field is auto-generated if it's not included in input data
+db.json_catches.insert({...}) // _id field is auto-generated if it's not included in input data
 ```
 ```javascript
 db.json_catches.insert({...}) // _id field is auto-generated if it's not included in input data
@@ -58,10 +57,11 @@ update() can take 3 parameters // **you cannot update _id**
 1. options
  * mongo updates one document at a time, use the **multi** option for batch updates
  * special update operators are used by mongo prefixed with **$**
+ * note the {multi: true} property must be specified in the 3rd parameter or otherwise only a single document will be updated.
 
 For example,
 ```javascript
-bd.restaurants.update(
+db.restaurants.update(
   { "address.zipcode": "10016", cuisine: "Other" }, // filter
   {
     $set: { cuisine: "Category To Be Determined" }, // update operator 1

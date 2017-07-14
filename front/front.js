@@ -13,7 +13,8 @@ var Hapi = require('hapi'),  // we server that proxies
   host = rif(HOST) || HOST;
 
 server.connection({
-  port: 8000 // test with http://localhost:8000/api/ping
+  port: 8000, // test with http://localhost:8000/api/ping
+  routes: { cors: true }
 });
 
 server.register(require('inert'));  // Static file and directory handlers plugin for hapi.js.
@@ -73,7 +74,7 @@ server.route({
   method: 'POST', path: '/api/catches',
   handler: {
     wo: {
-      passThrough: true // pass through sends on default config for HAPI (i think! - without it response headers like content-type are note set) 
+      passThrough: true // pass through sends on default config for HAPI (i think! - without it response headers like content-type are note set)
     }
   }
 });

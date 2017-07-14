@@ -15,3 +15,5 @@ nodemon filters/filters-service.js $HOST $BASES $OPTS &
 sleep 1
 nodemon catches/catches-service.js $HOST $BASES $OPTS &
 sleep 1
+nodemon store/store-service.js $HOST $BASES $OPTS &
+sleep 1

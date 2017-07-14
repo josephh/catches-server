@@ -1,0 +1,486 @@
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-06-02T11:06:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "51.052162",
+			"long": "-1.7587674"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "britford"
+		}, {
+			"type": "location",
+			"value": "trout-farm"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-06-02T11:06:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "51.052162",
+                "long": "-1.7587674"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/083ba0d0-55d5-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497976811&Signature=eNolAm3BWhcGXo9cBxxdizA%2Fqrw%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "britford"
+                },
+                {
+                    "type": "location",
+                    "value": "trout-farm"
+                }
+            ],
+            "id": "59494c67134215fc35454140"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "pike",
+		"date": "2016-10-02T12:01:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "51.838403",
+			"long": "-2.6390362"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "wye_valley"
+		}, {
+			"type": "location",
+			"value": "Symonds_yat"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "pike",
+            "date": "2016-10-02T12:01:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "51.838403",
+                "long": "-2.6390362"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/9bc5b570-55d5-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497977059&Signature=8r8TsFOzveJU84HNpyK8%2BBH6AO8%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "wye_valley"
+                },
+                {
+                    "type": "location",
+                    "value": "Symonds_yat"
+                }
+            ],
+            "id": "59494d5f134215fc35454141"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2016-11-12T18:02:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "53.865153",
+			"long": "-1.6842030"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "tarn"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2016-11-12T18:02:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "53.865153",
+                "long": "-1.6842030"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/ae56bf60-55e2-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497982674&Signature=J9uX07Y9erSjFhmQHTBPFLuPBdU%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "tarn"
+                }
+            ],
+            "id": "5949634e134215fc35454145"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "pike",
+		"date": "2016-10-02T12:01:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "51.949294",
+			"long": "-3.3926940"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "honddu"
+		}, {
+			"type": "location",
+			"value": "brecon"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "pike",
+            "date": "2016-10-02T12:01:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "51.949294",
+                "long": "-3.3926940"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/0b8189c0-55e5-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497983689&Signature=i363qR0WwzaVeOKcWu2wqDA1Lcw%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "honddu"
+                },
+                {
+                    "type": "location",
+                    "value": "brecon"
+                }
+            ],
+            "id": "59496745134215fc35454146"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-01-10T09:22:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "53.850856",
+			"long": "-1.7156696"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "aire"
+		}, {
+			"type": "location",
+			"value": "esholt"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-01-10T09:22:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "53.850856",
+                "long": "-1.7156696"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/54b0bcb0-55e5-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497983812&Signature=dEE9ODFXPlc0SgULKaq1qyi9ih8%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "aire"
+                },
+                {
+                    "type": "location",
+                    "value": "esholt"
+                }
+            ],
+            "id": "594967c0134215fc35454147"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-01-10T09:22:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "53.840678",
+			"long": "-1.7959213"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "aire"
+		}, {
+			"type": "location",
+			"value": "troutbeck"
+		}, {
+			"type": "location",
+			"value": "saltaire"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-01-10T09:22:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "53.840678",
+                "long": "-1.7959213"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/8a2df970-55e5-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497983902&Signature=XmVtQTRe4iE7rtAn2tT1Dn%2FiVSk%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "aire"
+                },
+                {
+                    "type": "location",
+                    "value": "troutbeck"
+                },
+                {
+                    "type": "location",
+                    "value": "saltaire"
+                }
+            ],
+            "id": "5949681a134215fc35454148"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-01-10T09:22:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "54.578302",
+			"long": "-2.4896140"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "appleby"
+		}, {
+			"type": "location",
+			"value": "leisure_centre"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-01-10T09:22:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "54.578302",
+                "long": "-2.4896140"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/d0fd1c50-55e5-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984021&Signature=wjWIRP7e0gfxie6KNVNkTCpUguU%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "appleby"
+                },
+                {
+                    "type": "location",
+                    "value": "leisure_centre"
+                }
+            ],
+            "id": "59496891134215fc35454149"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-01-10T09:22:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "53.836145",
+			"long": "-1.7111850"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "apperly_bridge"
+		}, {
+			"type": "location",
+			"value": "marina"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-01-10T09:22:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "53.836145",
+                "long": "-1.7111850"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/1ae4a2c0-55e6-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984144&Signature=g5h%2BxN9vIh7xsh%2FOm52K6OwmRMk%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "apperly_bridge"
+                },
+                {
+                    "type": "location",
+                    "value": "marina"
+                }
+            ],
+            "id": "5949690c134215fc3545414a"
+        }
+    }
+}
+================================================================================
+REQUEST
+{
+	"newCatch": {
+		"species": "perch",
+		"date": "2017-01-10T09:22:23Z",
+		"userId": "2",
+		"coordinates": {
+			"lat": "53.859348",
+			"long": "-1.7757511"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "mac-the-pike"
+		}, {
+			"type": "location",
+			"value": "baildon"
+		}, {
+			"type": "location",
+			"value": "golf_course"
+		}]
+	}
+}
+RESPONSE
+{
+    "data": {
+        "newCatch": {
+            "entity$": "-/json/catches",
+            "species": "perch",
+            "date": "2017-01-10T09:22:23Z",
+            "user_id": "2",
+            "coordinates": {
+                "lat": "53.859348",
+                "long": "-1.7757511"
+            },
+            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/7aebeb10-55e6-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984305&Signature=tXUatb%2FsWiX6XkqJjjHzCIqzYFo%3D",
+            "tags": [
+                {
+                    "type": "angler",
+                    "value": "mac-the-pike"
+                },
+                {
+                    "type": "location",
+                    "value": "baildon"
+                },
+                {
+                    "type": "location",
+                    "value": "golf_course"
+                }
+            ],
+            "id": "594969ad134215fc3545414b"
+        }
+    }
+}
+================================================================================

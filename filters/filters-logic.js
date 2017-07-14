@@ -7,8 +7,6 @@
 module.exports = function filters (options) {
   var seneca = this;
 
-  seneca.use('../store/store');
-
   seneca.add('filters:fetchAll', function(msg, done) {
     var seneca = this;
 
