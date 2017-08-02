@@ -17,33 +17,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-01-10T09:22:23Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "54.085476",
-                "long": "-1.7618251"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/ebe56d50-55e6-11e7-83fc-1d1de099e2c0.JPG?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984497&Signature=4gLWqulu5B%2B%2Fmr6UMPdVXx6Fj%2BY%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "pateley_bridge"
-                }
-            ],
-            "id": "59496a6d134215fc3545414c"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -66,37 +39,6 @@ REQUEST
 			"value": "bridge-mews"
 		}]
 	}
-}
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-01-10T09:22:23Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "51.702074",
-                "long": "-2.9065919"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/3de391e0-55e7-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984633&Signature=z3hcWqDQIiAeQCZcKLXZ9sctOaY%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "usk"
-                },
-                {
-                    "type": "location",
-                    "value": "bridge-mews"
-                }
-            ],
-            "id": "59496af5134215fc3545414d"
-        }
-    }
 }
 ================================================================================
 REQUEST
@@ -121,37 +63,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-01-10T09:22:23Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "52.125289",
-                "long": "-2.0505220"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/92d246b0-55e7-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497984775&Signature=XVbcmzgPZu%2Bc2sbDA%2F8qQ9Y0E98%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "pershore_anchor"
-                },
-                {
-                    "type": "location",
-                    "value": "avon_piddle"
-                }
-            ],
-            "id": "59496b83134215fc3545414e"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -175,37 +86,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "52.363782",
-                "long": "-2.7180433"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/431d8070-55e8-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985070&Signature=KRqufYUmyALRRQnIJU6BaYFrBHU%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "river_teme"
-                },
-                {
-                    "type": "location",
-                    "value": "charlton_arms"
-                }
-            ],
-            "id": "59496caa134215fc35454150"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -226,33 +106,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "52.051158",
-                "long": "-2.7120566"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/1b014090-55e8-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985003&Signature=ehTYZiE6q0G6hyl%2Fs3PHGkZuDW0%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "wye_way"
-                }
-            ],
-            "id": "59496c67134215fc3545414f"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -272,33 +125,6 @@ REQUEST
 			"value": "romsey_bypass"
 		}]
 	}
-}
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "50.985518",
-                "long": "-1.4996016"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/788c6550-55e8-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985162&Signature=3H6r3DovTONhdXVcjJcW%2F1lPAuI%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "romsey_bypass"
-                }
-            ],
-            "id": "59496d06134215fc35454151"
-        }
-    }
 }
 ================================================================================
 REQUEST
@@ -323,37 +149,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "51.164399",
-                "long": "-1.4450347"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/b7d2d230-55e8-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985267&Signature=fX%2BbCxsJGGZHpV8uSMnkPUtXLuo%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "fullerton_mill"
-                },
-                {
-                    "type": "location",
-                    "value": "river_test"
-                }
-            ],
-            "id": "59496d6f134215fc35454152"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -376,37 +171,6 @@ REQUEST
 			"value": "wharf"
 		}]
 	}
-}
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "53.983954",
-                "long": "-1.8871647"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/e22af850-55e8-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985338&Signature=zyGLYkb7yPwaZxFW8E%2BUNJ%2BnLTM%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "bolton_abbey"
-                },
-                {
-                    "type": "location",
-                    "value": "wharf"
-                }
-            ],
-            "id": "59496db6134215fc35454153"
-        }
-    }
 }
 ================================================================================
 REQUEST
@@ -431,37 +195,6 @@ REQUEST
 		}]
 	}
 }
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "53.930579",
-                "long": "-1.7394900"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/144fbb40-55e9-11e7-83fc-1d1de099e2c0.jpeg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985422&Signature=gpOJbuUrv3xbvXYIWm0f7uxinv0%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "askwith"
-                },
-                {
-                    "type": "location",
-                    "value": "east_beck"
-                }
-            ],
-            "id": "59496e0a134215fc35454154"
-        }
-    }
-}
 ================================================================================
 REQUEST
 {
@@ -484,36 +217,5 @@ REQUEST
 			"value": "stithians"
 		}]
 	}
-}
-RESPONSE
-{
-    "data": {
-        "newCatch": {
-            "entity$": "-/json/catches",
-            "species": "trout",
-            "date": "2017-04-26T21:02:00Z",
-            "user_id": "3",
-            "coordinates": {
-                "lat": "50.191119",
-                "long": "-5.1702261"
-            },
-            "image": "https://s3-eu-west-1.amazonaws.com/jobbings.fyb/uploads/4a5031c0-55e9-11e7-83fc-1d1de099e2c0.jpg?AWSAccessKeyId=AKIAIN6YFSMD6WJQHNWQ&Expires=1497985512&Signature=LPMo7KKFzsrtvaKsX7vTOTSUlRE%3D",
-            "tags": [
-                {
-                    "type": "angler",
-                    "value": "mac-the-pike"
-                },
-                {
-                    "type": "location",
-                    "value": "river_kennell"
-                },
-                {
-                    "type": "location",
-                    "value": "stithians"
-                }
-            ],
-            "id": "59496e64134215fc35454155"
-        }
-    }
 }
 ================================================================================

@@ -71,20 +71,18 @@ module.exports = function entry_store (options) {
           params = {
             Key: key,
             Body: base64Data,
-            ACL: "authenticated-read"
+            ACL: "public-read"
           };
         s3.putObject(params, function (err, resp) {
           if (err) throw err; // TODO add specific error message for this error callbacks e.g. "S3 putObject failed, exiting action handler"
-          s3.getSignedUrl('getObject', {Key: key}, function (err, data) {
-            if (err) console.log(err, err.stack);
-            console.log('data ???? ' + data);
-            newCatch.image = data;
-            newCatch.save$(function(err, entry) {
-              if(err) return done(err);
-              newCatch.id = entry.id;
-              done(null, {data: {newCatch}});
-            });
-          })
+          var url = 'https://s3-eu-west-1.amazonaws.com/jobbings.fyb/' +  key;
+          console.log("url for new image? " + url);
+          newCatch.image = url;
+          newCatch.save$(function(err, entry) {
+            if(err) return done(err);
+            newCatch.id = entry.id;
+            done(null, {data: {newCatch}});
+          });
         });
       });
     }
