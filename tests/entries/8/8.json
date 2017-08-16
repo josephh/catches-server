@@ -1,0 +1,24 @@
+{
+  "newCatch": {
+    "species": "pike",
+    "date": "2017-10-27T22:00:12Z",
+    "userId": "1",
+    "coordinates": {
+      "lat": "51.448016",
+      "long": "-0.87083817"
+    },
+    "tags": [{
+      "type": "angler",
+      "value": "Bernard"
+    }, {
+      "type": "location",
+      "value": "sandford_lane"
+    }, {
+      "type": "location",
+      "value": "loddon"
+    }, {
+      "type": "location",
+      "value": "old-river"
+    }]
+  }
+}

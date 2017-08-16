@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "pike",
+		"date": "2017-10-27T22:00:12Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.428113",
+			"long": "-1.0540009"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "qUentin"
+		}, {
+			"type": "location",
+			"value": "theale"
+		}, {
+			"type": "location",
+			"value": "sheffield_bottom"
+		}]
+	}
+}

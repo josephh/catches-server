@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "trout",
+		"date": "2017-07-24T16:52:00Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.059928",
+			"long": "-1.7833900"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "JeremY"
+		}, {
+			"type": "location",
+			"value": "britford"
+		}, {
+			"type": "location",
+			"value": "river_avon"
+		}]
+	}
+}

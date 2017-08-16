@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "roach",
+		"date": "2017-03-29T11:52:27Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.592642",
+			"long": "-0.48889160"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "jean-claude"
+		}, {
+			"type": "location",
+			"value": "colne"
+		}, {
+			"type": "location",
+			"value": "broadwater"
+		}]
+	}
+}

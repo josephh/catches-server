@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "carp",
+		"date": "2017-03-21T11:52:27Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.403704",
+			"long": "-0.53206444"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "bernard"
+		}, {
+			"type": "location",
+			"value": "st-anne's_lake"
+		}, {
+			"type": "location",
+			"value": "mill lane"
+		}]
+	}
+}

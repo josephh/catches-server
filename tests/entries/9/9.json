@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "pike",
+		"date": "2017-12-02T12:00:00Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.498912",
+			"long": "-0.69179535"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "jope-the_dope"
+		}, {
+			"type": "location",
+			"value": "dorney"
+		}, {
+			"type": "location",
+			"value": "tithe_barn"
+		}]
+	}
+}

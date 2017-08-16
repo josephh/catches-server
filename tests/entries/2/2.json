@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "carp",
+		"date": "2017-02-15T09:50:27Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "51.414010",
+			"long": "-0.50713062"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "Rob"
+		}, {
+			"type": "location",
+			"value": "penton_hook"
+		}, {
+			"type": "location",
+			"value": "marina"
+		}]
+	}
+}

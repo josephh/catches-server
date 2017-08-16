@@ -1,0 +1,21 @@
+{
+	"newCatch": {
+		"species": "pike",
+		"date": "2017-10-03T18:02:09Z",
+		"userId": "1",
+		"coordinates": {
+			"lat": "50.982749",
+			"long": "-1.5020370"
+		},
+		"tags": [{
+			"type": "angler",
+			"value": "Colin"
+		}, {
+			"type": "location",
+			"value": "itchen"
+		}, {
+			"type": "location",
+			"value": "bypass"
+		}]
+	}
+}
