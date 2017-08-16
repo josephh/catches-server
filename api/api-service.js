@@ -141,7 +141,7 @@ server.route({
   },
   handler: function( request, reply ) {
     const payload = request.payload,
-      jsonData = JSON.parse(payload.data)
+      jsonData = JSON.parse(payload.data),
       image = payload.image;
     var newName, name;
     if (image) {
