@@ -74,7 +74,7 @@ server.route({
   method: 'POST', path: '/api/catches',
   handler: {
     wo: {
-      passThrough: true // pass through sends on default config for HAPI (i think! - without it response headers like content-type are note set)
+      passThrough: true // pass through sends on default config for HAPI (i think! - without it response headers like content-type are not set)
     }
   }
 });
