@@ -3,6 +3,53 @@ db
 show dbs
 ## switch collection?
 use ...
+## read records?
+**individual fields**
+```javascript
+> db.json_catches.find({}, {_id: 1, createdDate: 1}).limit(2);
+{ "_id" : ObjectId("59a9cc48f30a3234d5b7adf5") }
+{ "_id" : ObjectId("59a9cc49f30a3234d5b7adf6") }
+```
+## random sample
+```javascript
+db.json_catches.aggregate(
+   [ { $sample: { size: 3 } } ]
+)
+```
+## read with cursor
+...has degrading performance with large datasets, since the cursor must step over all documents.
+## read/ pagination using a range
+use an indexed field instead and use the last index for the first or last position when paging backwards and forwards.
+```javascript
+//Page 1
+db.json_catches.find().limit(10);
+//Find the id of the last document in this page
+last_id = ...
+
+//Page 2
+users = db.users.find({'_id'> last_id}). limit(10);
+//Update the last id with the id of the last document in this page
+last_id = ...
+```
+**backwards**? `next_id = Math.min(...users.map(user => {return user._id}))`)
+## distinct? (Aggregation framework)
+The following example is specifically for the scenario where we wish to execute a DISTINCT query on an array of objects, getting unique values from one field while filtering on another.
+```javascript
+db.json_catches.aggregate(
+    {$unwind : "$tags"},
+    {$match : {
+                "tags.type" : "angler"
+    }},
+    {$group: {
+        _id : "$tags.value"
+    }},
+    {$group: {
+        _id : "count",
+        total : {"$sum" : 1},
+        distinctValues : {$addToSet : "$_id"}
+    }}
+);
+```
 ## write records?
 ```javascript
 db.json_catches.insert({...}) // _id field is auto-generated if it's not included in input data
@@ -31,24 +78,6 @@ db.restaurants.find().sort( { "borough": 1, "address.zipcode": 1 } ) // append s
 ```
 ```javascript
 db.restaurants.find().sort( { "borough": 1, "address.zipcode": 1 } ).pretty() // append pretty() for output formatting with spaces
-```
-## distinct? (Aggregation framework)
-The following example is specifically for the scenario where we wish to execute a DISTINCT query on an array of objects, getting unique values from one field while filtering on another.
-```javascript
-db.json_catches.aggregate(
-    {$unwind : "$tags"},
-    {$match : {
-                "tags.type" : "angler"
-    }},
-    {$group: {
-        _id : "$tags.value"
-    }},
-    {$group: {
-        _id : "count",
-        total : {"$sum" : 1},
-        distinctValues : {$addToSet : "$_id"}
-    }}
-);
 ```
 ## update?
 update() can take 3 parameters // **you cannot update _id**
@@ -93,3 +122,7 @@ Change profiling (e.g. of slow queries) with start commands like the following -
 
 Turn on logging in the mongo cli with commands like,
 >`db.setLogLevel(1)`
+
+1. sort as well as limit
+
+1. how to add indexes?
