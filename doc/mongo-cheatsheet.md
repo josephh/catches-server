@@ -56,7 +56,7 @@ db.json_catches.insert({...}) // _id field is auto-generated if it's not include
 ```
 ```javascript
 db.json_catches.insert({...}) // _id field is auto-generated if it's not included in input data
-```˜
+```
 ## query?
 ```javascript
 db.test.find() // query for all records (queries in mongo have the scope of a single collection)
