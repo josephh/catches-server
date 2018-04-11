@@ -50,7 +50,7 @@ db.json_catches.aggregate(
     }}
 );
 ```
-## write records?
+## write records?
 ```javascript
 db.json_catches.insert({...}) // _id field is auto-generated if it's not included in input data
 ```
